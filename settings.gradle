@@ -1,0 +1,6 @@
+rootProject.name = 'parent'
+include ':coin-rpc'
+include ':coin-wallet'
+
+project(':coin-rpc').projectDir = "$rootDir/coin-rpc" as File
+project(':coin-wallet').projectDir = "$rootDir/coin-wallet" as File

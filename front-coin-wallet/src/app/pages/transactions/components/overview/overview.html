@@ -1,0 +1,46 @@
+<div id="transactionsOverview" *ngIf="pagedItems?.length > 0">
+
+    <div class="col-md-12 col-xs-12 center row-spacer-25">
+        <span class="location-1">{{'TRANSACTIONS' | translate}}</span>
+    </div>
+
+    <div class="row col-md-12 horizontal-scroll row-spacer-25">
+        <table class="table table-hover address_table">
+            <thead>
+            <tr class="black-muted-bg white-text">
+                <th class="action-icons">{{'HASH' | translate}}</th>
+                <th class="align-right">{{'DATE' | translate}}</th>
+                <th class="align-right">{{'AMOUNT' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transactionWrapper of pagedItems" class="no-top-border">
+                <td class="columnAddress"><a class="table-text-wrapper" (click)="gotoBlock(transactionWrapper.hash)">{{ transactionWrapper.hash }}</a></td>
+                <td class="align-right">{{getDate(transactionWrapper)}}</td>
+                <!--<td class="align-right">{{getFee(transactionWrapper)}}</td>-->
+                <td class="align-right">{{getAmount(transactionWrapper)}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row col-md-12 row-spacer-15">
+        <div class="spes-pagination-container wow zoomIn mar-b-1x" data-wow-duration="0.5s">
+
+            <ul class="spes-pagination">
+                <li class="spes-pagination-item--wide first" [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a class="spes-pagination-link--wide first" (click)="setPage(1)"><i class="fa fa-fast-backward" aria-hidden="true"></i></a>
+                    <a class="spes-pagination-link--wide first" (click)="setPage(pager.currentPage - 1)"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+                </li>
+                <li class="spes-pagination-item" [ngClass]="{'is-active':pager.currentPage === page}" *ngFor="let page of pager.pages"><a  class="spes-pagination-link" (click)="setPage(page)">{{page}}</a></li>
+                <li class="spes-pagination-item--wide last" [ngClass]="{disabled:pager.currentPage === pager.pages.length}">
+                    <a class="spes-pagination-link--wide last" (click)="setPage(pager.currentPage + 1)"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+                    <a class="spes-pagination-link--wide last" (click)="setPage(pager.totalPages)"><i class="fa fa-fast-forward" aria-hidden="true"></i></a>
+                </li>
+                <!--<li class="spes-pagination-item&#45;&#45;wide first" [ngClass]="{disabled:pager.currentPage === 1}"> <a class="spes-pagination-link&#45;&#45;wide first" (click)="setPage(pager.currentPage - 1)">{{'PREVIOUS' | translate}}</a> </li>-->
+                <!--<li class="spes-pagination-item" [ngClass]="{'is-active':pager.currentPage === page}" *ngFor="let page of pager.pages"><a  class="spes-pagination-link" (click)="setPage(page)">{{page}}</a></li>-->
+                <!--<li class="spes-pagination-item&#45;&#45;wide last"> <a class="spes-pagination-link&#45;&#45;wide last" (click)="setPage(pager.currentPage + 1)">{{'NEXT' | translate}}</a> </li>-->
+            </ul>
+        </div>
+    </div>
+</div>
