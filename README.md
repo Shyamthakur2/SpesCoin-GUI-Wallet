@@ -24,7 +24,7 @@ Change the following properties:
 | ------------- |:------------- |:-------- |
 | coin      | The name of the coin | spescoin    |
 | wallet-daemon-base-url | The url we start the daemon on (see bind-port in coin-wallet.conf) | http://0.0.0.0:9090 |
-| coin-daemon-base-url | The url the coin rpc starts on | http://127.0.0.1:39156 |
+| coin-daemon-base-url | The url the coin rpc starts on | http://127.0.0.1:55490 |
 | log-file-coin | The name of the coin daemon log file | spescoind.log |
 | log-file-wallet | The name of the wallet daemon log file | walletd.log |
 | min-width | Minimum width of the gui wallet | 1350 |
